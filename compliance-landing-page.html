@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verified — EU compliance documents for cross-border founders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111a2b;
+    --ink-2:#1b2740;
+    --paper:#f5f6f8;
+    --surface:#ffffff;
+    --line:#e2e5ea;
+    --ink-soft:#5a6573;
+    --ink-mute:#8b95a3;
+    --verified:#0e7a4d;
+    --verified-bg:#e7f3ec;
+    --flag:#a96808;
+    --flag-bg:#fbf1de;
+    --accent:#2348c9;
+    --radius:14px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.08;margin:0;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* shared atoms */
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-mute);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ink-mute);display:inline-block;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  .btn{
+    font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:15px;
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 22px;border-radius:10px;border:1px solid transparent;cursor:pointer;
+    transition:transform .18s var(--ease),background .18s var(--ease),box-shadow .18s var(--ease);
+    text-align:center;
+  }
+  .btn-primary{background:var(--ink);color:#fff;box-shadow:0 1px 0 rgba(17,26,43,.04);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(17,26,43,.55);}
+  .btn-primary .arr{transition:transform .2s var(--ease);}
+  .btn-primary:hover .arr{transform:translateX(3px);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px);}
+  .btn-light{background:#fff;color:var(--ink);}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:0 12px 30px -14px rgba(0,0,0,.5);}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;}
+
+  /* status tags */
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;
+    display:inline-flex;align-items:center;gap:6px;
+    padding:4px 9px;border-radius:6px;white-space:nowrap;letter-spacing:.01em;
+  }
+  .tag-ok{background:var(--verified-bg);color:var(--verified);}
+  .tag-flag{background:var(--flag-bg);color:var(--flag);}
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(245,246,248,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Newsreader",serif;font-size:21px;font-weight:600;letter-spacing:-.02em;}
+  .seal{width:26px;height:26px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-size:14.5px;color:var(--ink-soft);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  @media(max-width:860px){.nav-links{display:none;}.nav-cta .btn-ghost{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:74px 0 70px;}
+  .hero-grid{display:grid;grid-template-columns:1.04fr 1fr;gap:60px;align-items:center;}
+  .hero-copy h1{font-size:clamp(38px,5.2vw,62px);margin:20px 0 0;}
+  .hero-copy h1 em{font-style:italic;color:var(--ink);}
+  .hero-sub{font-size:19px;color:var(--ink-soft);margin-top:22px;max-width:30em;line-height:1.55;}
+  .hero-actions{display:flex;align-items:center;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .hero-micro{font-size:13.5px;color:var(--ink-mute);margin-top:16px;display:flex;align-items:center;gap:8px;}
+  .hero-micro .dot{background:var(--verified);}
+
+  /* document panel (signature) */
+  .doc{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:0 30px 60px -34px rgba(17,26,43,.4),0 2px 8px -4px rgba(17,26,43,.1);
+    overflow:hidden;
+  }
+  .doc-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--line);background:#fcfcfd;}
+  .doc-file{display:flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-soft);}
+  .doc-file .fdot{width:8px;height:8px;border-radius:2px;background:var(--line);}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;padding:5px 11px;border-radius:20px;display:inline-flex;align-items:center;gap:7px;transition:background .4s,color .4s;}
+  .chip.scanning{background:#eef0f3;color:var(--ink-soft);}
+  .chip.done{background:var(--flag-bg);color:var(--flag);}
+  .chip .spin{width:10px;height:10px;border:2px solid var(--ink-mute);border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .doc-body{padding:24px 22px 26px;}
+  .doc-title{font-family:"Newsreader",serif;font-size:18px;font-weight:600;margin-bottom:2px;}
+  .doc-meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-mute);margin-bottom:18px;}
+  .claim{position:relative;padding:11px 0;border-top:1px dashed var(--line);}
+  .claim:first-of-type{border-top:none;}
+  .claim-txt{font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .claim .anno{margin-top:7px;opacity:0;transform:translateY(4px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+  body.js-ready .claim .anno{will-change:opacity,transform;}
+  .claim.lit .anno{opacity:1;transform:none;}
+  .claim.gap .claim-txt{color:var(--ink-soft);}
+
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .hero{padding:48px 0 56px;}
+  }
+
+  /* ---------- trust strip ---------- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);}
+  .strip-in{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding:18px 0;}
+  .strip-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);}
+  .strip-items{display:flex;gap:26px;flex-wrap:wrap;}
+  .strip-items span{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;}
+  .strip-items .dot{background:var(--verified);}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0;}
+  .sec-head{max-width:34em;}
+  .sec-head h2{font-size:clamp(28px,3.6vw,42px);margin-top:16px;}
+  .sec-head p{color:var(--ink-soft);margin-top:16px;font-size:18px;}
+
+  /* problem */
+  .problem{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .req-list{margin-top:40px;display:grid;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .req{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;border-top:1px solid var(--line);background:#fff;}
+  .req:first-child{border-top:none;}
+  .req-name{font-size:16px;font-weight:500;}
+  .req-name small{display:block;font-weight:400;color:var(--ink-mute);font-size:13.5px;margin-top:2px;}
+  .stakes{margin-top:26px;font-size:16px;color:var(--ink-soft);}
+  .stakes b{color:var(--ink);font-weight:600;}
+
+  /* how it works */
+  .loop{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);}
+  .step{padding:30px 26px 30px 0;border-right:1px solid var(--line);position:relative;}
+  .step:last-child{border-right:none;padding-right:0;}
+  .step .num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-mute);font-weight:500;}
+  .step h3{font-size:21px;margin:16px 0 9px;font-weight:600;}
+  .step p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
+  .step .ic{margin-top:18px;}
+  @media(max-width:860px){.loop{grid-template-columns:1fr 1fr;}.step{border-right:none;border-bottom:1px solid var(--line);padding:26px 0;}.step:nth-child(odd){padding-right:26px;border-right:1px solid var(--line);}}
+  @media(max-width:520px){.loop{grid-template-columns:1fr;}.step:nth-child(odd){border-right:none;padding-right:0;}}
+
+  /* differentiator */
+  .diff{background:var(--ink);color:#fff;}
+  .diff .eyebrow,.diff .eyebrow::before{color:#7c8aa3;background-color:#7c8aa3;}
+  .diff .eyebrow{background:none;}
+  .diff h2{color:#fff;}
+  .diff-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;}
+  .diff p.lead{color:#aeb8c8;margin-top:18px;font-size:18px;max-width:30em;}
+  .diff .pull{font-family:"Newsreader",serif;font-size:23px;line-height:1.4;margin-top:26px;color:#fff;}
+  .diff .pull b{color:#5fd39b;font-weight:500;}
+  .redline{background:var(--ink-2);border:1px solid #2a3a58;border-radius:var(--radius);padding:24px;}
+  .redline .rl-top{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7c8aa3;margin-bottom:18px;}
+  .rl-row{padding:14px 0;border-top:1px solid #2a3a58;}
+  .rl-row:first-of-type{border-top:none;}
+  .rl-claim{font-size:15px;color:#dbe2ee;}
+  .rl-claim s{color:#e08a8a;text-decoration-thickness:1.5px;}
+  .rl-claim ins{color:#5fd39b;text-decoration:none;}
+  .rl-note{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#9aa6ba;margin-top:7px;display:flex;align-items:center;gap:7px;}
+  @media(max-width:860px){.diff-grid{grid-template-columns:1fr;gap:36px;}}
+
+  /* pricing */
+  .price-grid{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;display:flex;flex-direction:column;transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(17,26,43,.45);}
+  .card.feature{border-color:var(--ink);box-shadow:0 22px 44px -26px rgba(17,26,43,.4);}
+  .card .ribbon{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--verified);margin-bottom:12px;height:14px;}
+  .card h3{font-size:19px;font-weight:600;}
+  .card .price{font-family:"Newsreader",serif;font-size:32px;font-weight:500;margin:12px 0 4px;}
+  .card .price small{font-family:"Hanken Grotesk",sans-serif;font-size:14px;color:var(--ink-mute);font-weight:400;}
+  .card .who{font-size:13.5px;color:var(--ink-mute);min-height:38px;margin-bottom:14px;}
+  .card ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px;}
+  .card li{font-size:14px;color:var(--ink-soft);display:flex;gap:9px;align-items:flex-start;line-height:1.4;}
+  .card li svg{flex:none;margin-top:3px;}
+  .card .btn{margin-top:auto;width:100%;justify-content:center;}
+  @media(max-width:980px){.price-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.price-grid{grid-template-columns:1fr;}}
+
+  /* who */
+  .who-sec{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .who-grid{margin-top:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .who-item{display:flex;gap:14px;padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff;}
+  .who-item .k{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--verified);font-weight:600;flex:none;width:30px;}
+  .who-item p{font-size:15px;color:var(--ink-soft);}
+  .who-item b{color:var(--ink);font-weight:600;}
+  @media(max-width:720px){.who-grid{grid-template-columns:1fr;}}
+
+  /* faq */
+  .faq-list{margin-top:40px;border-top:1px solid var(--line);}
+  .faq{border-bottom:1px solid var(--line);}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:18px;font-weight:500;font-family:"Newsreader",serif;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .pm{font-family:"IBM Plex Mono",monospace;font-size:20px;color:var(--ink-mute);transition:transform .2s;flex:none;}
+  .faq[open] summary .pm{transform:rotate(45deg);}
+  .faq .ans{padding:0 0 22px;color:var(--ink-soft);font-size:15.5px;max-width:46em;}
+
+  /* final cta */
+  .final{background:var(--ink);color:#fff;text-align:center;}
+  .final h2{color:#fff;font-size:clamp(30px,4.4vw,50px);}
+  .final p{color:#aeb8c8;margin-top:18px;font-size:18px;}
+  .final .btn{margin-top:30px;}
+  .final .sub{margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#7c8aa3;}
+
+  /* footer */
+  footer{background:var(--paper);padding:54px 0 40px;border-top:1px solid var(--line);}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-links{display:flex;gap:40px;flex-wrap:wrap;}
+  .foot-col h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px;font-weight:500;}
+  .foot-col a{display:block;font-size:14px;color:var(--ink-soft);margin-bottom:9px;transition:color .15s;}
+  .foot-col a:hover{color:var(--ink);}
+  .disclaimer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-mute);line-height:1.6;max-width:60em;}
+  .copyr{margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-mute);}
+
+  /* cookie consent (on-brand: we practice what we sell) */
+  .consent{position:fixed;left:20px;bottom:20px;right:20px;max-width:440px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 50px -20px rgba(17,26,43,.5);padding:20px 22px;z-index:80;transform:translateY(140%);transition:transform .5s var(--ease);}
+  .consent.in{transform:none;}
+  .consent .ch{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--verified);display:flex;align-items:center;gap:8px;}
+  .consent p{font-size:13.5px;color:var(--ink-soft);margin:10px 0 16px;}
+  .consent .row{display:flex;gap:10px;}
+  .consent .btn{padding:9px 16px;font-size:13.5px;}
+
+  /* reveal */
+  body.js-ready .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  body.js-ready .reveal.in{opacity:1;transform:none;}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}
+    body.js-ready .reveal,.claim .anno{opacity:1!important;transform:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Verified home">
+      <span class="seal" aria-hidden="true">✓</span> Verified
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#why">Why us</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      <a class="btn btn-primary" href="#scan">Run free scan <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="scan">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">GDPR &amp; EU AI Act · Compliance ops</span>
+      <h1>Close your first EU deal without the compliance questionnaire <em>killing it.</em></h1>
+      <p class="hero-sub">You're selling into Europe from outside it. We scan the documents you have, fix what's missing, and verify every line against the actual law — before it ever reaches your buyer's lawyers.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#pricing">Run my free compliance scan <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-micro"><span class="dot" aria-hidden="true"></span> No signup wall. Upload your docs, get a gap report in minutes.</p>
+    </div>
+
+    <!-- SIGNATURE: a document being verified -->
+    <div class="doc reveal" id="docPanel" aria-hidden="true">
+      <div class="doc-bar">
+        <span class="doc-file"><span class="fdot"></span> privacy-policy.pdf</span>
+        <span class="chip scanning" id="docChip"><span class="spin"></span> Scanning…</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-title">Privacy Policy — Acme AI Ltd</div>
+        <div class="doc-meta">CHECKED AGAINST · GDPR (2016/679) · EU AI ACT (2024/1689)</div>
+
+        <div class="claim" data-i="0">
+          <div class="claim-txt">Personal data is processed under legitimate interest, Art. 6(1)(f) GDPR.</div>
+          <div class="anno"><span class="tag tag-ok"><span class="dot"></span> Verified · EUR-Lex 32016R0679</span></div>
+        </div>
+        <div class="claim" data-i="1">
+          <div class="claim-txt">Standard Contractual Clauses govern international data transfers.</div>
+          <div class="anno"><span class="tag tag-ok"><span class="dot"></span> Verified · Decision 2021/914</span></div>
+        </div>
+        <div class="claim gap" data-i="2">
+          <div class="claim-txt">Record of Processing Activities (Art. 30) — required, not found.</div>
+          <div class="anno"><span class="tag tag-flag"><span class="dot"></span> Gap · mandatory document missing</span></div>
+        </div>
+        <div class="claim" data-i="3">
+          <div class="claim-txt">Data subject access requests answered within one month.</div>
+          <div class="anno"><span class="tag tag-ok"><span class="dot"></span> Verified · Art. 12(3)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <span class="strip-label">Verified against</span>
+    <div class="strip-items">
+      <span><span class="dot"></span> EUR-Lex official text</span>
+      <span><span class="dot"></span> European Commission</span>
+      <span><span class="dot"></span> EDPB &amp; national regulators</span>
+      <span><span class="dot"></span> No AI-hallucinated law</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The wall</span>
+      <h2>It hits exactly when you're winning.</h2>
+      <p>You found a European customer. They love the product. Then procurement sends the data questionnaire — and the deal stalls until you produce documents you didn't know you needed.</p>
+    </div>
+    <div class="req-list reveal">
+      <div class="req"><div class="req-name">GDPR-compliant privacy policy <small>Matched to how your product actually processes data</small></div><span class="tag tag-flag"><span class="dot"></span> Asked for</span></div>
+      <div class="req"><div class="req-name">Data Processing Agreement <small>The one your customer's legal team won't bounce</small></div><span class="tag tag-flag"><span class="dot"></span> Asked for</span></div>
+      <div class="req"><div class="req-name">Record of Processing Activities <small>Legally required — most founders don't keep one</small></div><span class="tag tag-flag"><span class="dot"></span> Required</span></div>
+      <div class="req"><div class="req-name">EU AI Act readiness assessment <small>Obligations phasing in through 2026–27</small></div><span class="tag tag-flag"><span class="dot"></span> Required</span></div>
+    </div>
+    <p class="stakes reveal">Get it wrong and the deal dies — or worse. GDPR fines reach <b>up to 4% of global annual revenue.</b> Get it from a template generator and the buyer's lawyers spot it in five minutes. <b>You don't have a compliance team. You have a deadline.</b></p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The loop</span>
+      <h2>Assess. Fix. Verify. Stay current.</h2>
+      <p>One closed loop runs the whole lifecycle of your compliance documents — so "compliant today" stays compliant.</p>
+    </div>
+    <div class="loop">
+      <div class="step reveal">
+        <span class="num">01 / Assess</span>
+        <h3>Scan</h3>
+        <p>Upload your docs. Our engine checks them against the frameworks that actually apply to your business and returns a plain-English gap report.</p>
+        <span class="ic tag tag-ok"><span class="dot"></span> gap report</span>
+      </div>
+      <div class="step reveal">
+        <span class="num">02 / Remediate</span>
+        <h3>Fix</h3>
+        <p>We draft or rewrite every document to close the gaps — tailored to your real data flows and product, never boilerplate.</p>
+        <span class="ic tag tag-ok"><span class="dot"></span> tailored docs</span>
+      </div>
+      <div class="step reveal">
+        <span class="num">03 / Verify</span>
+        <h3>Verify</h3>
+        <p>Every claim, date and citation is fact-checked against official sources before it reaches you. The part nobody else does.</p>
+        <span class="ic tag tag-ok"><span class="dot"></span> source-checked</span>
+      </div>
+      <div class="step reveal">
+        <span class="num">04 / Monitor</span>
+        <h3>Stay current</h3>
+        <p>Regulations change. We flag when a rule shifts and your documents go stale, so you're never quietly out of compliance.</p>
+        <span class="ic tag tag-ok"><span class="dot"></span> always current</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="diff" id="why">
+  <div class="wrap diff-grid">
+    <div class="reveal">
+      <span class="eyebrow">Why us</span>
+      <h2>Other tools generate documents. We verify them.</h2>
+      <p class="lead">The dirty secret of AI legal docs: models invent article numbers, get enforcement dates wrong, and present guidance as hard law. In compliance, that's not a typo — it's the liability.</p>
+      <p class="pull">Every document passes an adversarial check that assumes the draft is wrong until proven correct against the official text. <b>No hallucinated law. Nothing reaches you unverified.</b></p>
+    </div>
+    <div class="redline reveal">
+      <div class="rl-top">Adversarial verification · live</div>
+      <div class="rl-row">
+        <div class="rl-claim">Prohibited-use rules apply under <s>AI Act Art. 42(5)</s> <ins>Art. 5</ins>.</div>
+        <div class="rl-note"><span class="dot" style="background:#e08a8a"></span> Caught · Art. 42(5) does not exist in the AI Act</div>
+      </div>
+      <div class="rl-row">
+        <div class="rl-claim">NIS2 applies from <s>October 2024</s> <ins>17 October 2024</ins>.</div>
+        <div class="rl-note"><span class="dot" style="background:#5fd39b"></span> Corrected · exact enforcement date verified</div>
+      </div>
+      <div class="rl-row">
+        <div class="rl-claim">ENISA guidance treated as <s>binding obligation</s> <ins>non-binding recommendation</ins>.</div>
+        <div class="rl-note"><span class="dot" style="background:#5fd39b"></span> Reclassified · guidance ≠ legal requirement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Start free. Pay only when you decide to fix it.</h2>
+      <p>See exactly where you stand at no cost, then move up the moment a deal — or a regulator — demands it.</p>
+    </div>
+    <div class="price-grid">
+      <div class="card reveal">
+        <div class="ribbon">&nbsp;</div>
+        <h3>Free Scan</h3>
+        <div class="price">€0</div>
+        <p class="who">For anyone who wants to know where they stand.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Automated gap report</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> GDPR + AI Act check</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> No card required</li>
+        </ul>
+        <a class="btn btn-ghost" href="#scan">Run free scan</a>
+      </div>
+
+      <div class="card reveal">
+        <div class="ribbon">&nbsp;</div>
+        <h3>Remediation Pack</h3>
+        <div class="price">€1,000 <small>from</small></div>
+        <p class="who">For early founders who just got asked for docs.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Privacy policy, DPA, ToS, RoPA</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Tailored to your business</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Fully source-verified</li>
+        </ul>
+        <a class="btn btn-ghost" href="#scan">Start the pack</a>
+      </div>
+
+      <div class="card feature reveal">
+        <div class="ribbon">★ Most popular</div>
+        <h3>Market-Entry Kit</h3>
+        <div class="price">€3,500 <small>from</small></div>
+        <p class="who">For funded teams closing EU enterprise deals.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Remediation</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Act assessment + DPIA</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Vendor DPA review, board-ready</li>
+        </ul>
+        <a class="btn btn-primary" href="#scan">Book a call <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="card reveal">
+        <div class="ribbon">&nbsp;</div>
+        <h3>Continuous</h3>
+        <div class="price">€300 <small>/mo from</small></div>
+        <p class="who">For anyone who wants to set it and stop worrying.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Ongoing monitoring</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Quarterly re-scans</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7l3.5 3.5L12 3" stroke="#0e7a4d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Updates as rules phase in</li>
+        </ul>
+        <a class="btn btn-ghost" href="#scan">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for founders entering the EU from outside it.</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-item reveal"><span class="k">A</span><p><b>Cross-border founders</b> — MENA, India, SEA, US — hitting GDPR and AI Act walls the moment they sell to European customers.</p></div>
+      <div class="who-item reveal"><span class="k">B</span><p><b>Solopreneurs</b> who need legitimate, defensible documents without a €400-an-hour lawyer on retainer.</p></div>
+      <div class="who-item reveal"><span class="k">C</span><p><b>Funded startups</b> whose first enterprise deal just turned into a security and data questionnaire.</p></div>
+      <div class="who-item reveal"><span class="k">D</span><p><b>Teams shipping AI</b> who need to know what the AI Act actually requires — before a regulator tells them.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>The things buyers ask first.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq">
+        <summary>Is this legal advice? <span class="pm" aria-hidden="true">+</span></summary>
+        <div class="ans">No. We provide compliance operations and document preparation — we help you produce and verify the documents your business needs. We are not a law firm and this is not legal advice. When a question genuinely calls for a lawyer, we'll tell you, and we can connect you with counsel in the relevant jurisdiction.</div>
+      </details>
+      <details class="faq">
+        <summary>How is this different from a template generator? <span class="pm" aria-hidden="true">+</span></summary>
+        <div class="ans">Templates hand you a generic document and leave the risk with you. We tailor to your actual data flows, then independently verify every legal reference against official sources. The difference shows up the moment a buyer's legal team reviews it.</div>
+      </details>
+      <details class="faq">
+        <summary>How fast is it? <span class="pm" aria-hidden="true">+</span></summary>
+        <div class="ans">The scan takes minutes. A Remediation Pack typically turns around in days, not weeks.</div>
+      </details>
+      <details class="faq">
+        <summary>What if my documents fail my customer's review? <span class="pm" aria-hidden="true">+</span></summary>
+        <div class="ans">They're built to pass enterprise legal review — that's the entire point of the verification layer. If something is queried, we work with you to resolve it.</div>
+      </details>
+      <details class="faq">
+        <summary>Do you cover the US too? <span class="pm" aria-hidden="true">+</span></summary>
+        <div class="ans">Our core focus is EU entry — GDPR and the AI Act — where the pain is sharpest for incoming founders. US frameworks are available on request as we expand coverage.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#7c8aa3;justify-content:center;">Find out where you stand</span>
+    <h2>You can't fix what you can't see.</h2>
+    <p>Run the scan, get your gap report, and decide from there. Free, in minutes.</p>
+    <a class="btn btn-light" href="#scan">Run my free compliance scan <span class="arr" aria-hidden="true">→</span></a>
+    <p class="sub">No card · No signup wall · GDPR + EU AI Act</p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top"><span class="seal" aria-hidden="true">✓</span> Verified</a>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Product</h4>
+          <a href="#how">How it works</a>
+          <a href="#why">Verification</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="foot-col">
+          <h4>Frameworks</h4>
+          <a href="#">GDPR</a>
+          <a href="#">EU AI Act</a>
+          <a href="#">NIS2 · DORA <span style="color:var(--ink-mute)">(soon)</span></a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="#faq">FAQ</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy &amp; terms</a>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">Verified provides compliance operations and document-preparation services. We are not a law firm and do not provide legal advice. Documents are verified against publicly available official sources at the time of delivery; regulations change and ongoing compliance requires monitoring. For legal advice specific to your situation, consult a qualified attorney in the relevant jurisdiction.</p>
+    <p class="copyr">© 2026 Verified. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT -->
+<aside class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <span class="ch"><span class="dot" style="background:var(--verified)"></span> We practice what we sell</span>
+  <p>We use only essential cookies to run this site. Analytics stay off until you say yes — that's what GDPR actually requires.</p>
+  <div class="row">
+    <button class="btn btn-primary" id="cookieAccept">Accept analytics</button>
+    <button class="btn btn-ghost" id="cookieReject">Essential only</button>
+  </div>
+</aside>
+
+<script>
+  document.body.classList.add('js-ready');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveals
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    },{threshold:.16, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Hero document verification sequence
+  var panel = document.getElementById('docPanel');
+  var claims = Array.prototype.slice.call(document.querySelectorAll('.claim'));
+  var chip = document.getElementById('docChip');
+  function runVerify(){
+    if(reduce){
+      claims.forEach(function(c){c.classList.add('lit');});
+      chip.className = 'chip done';
+      chip.innerHTML = '3 verified · 1 gap';
+      return;
+    }
+    claims.forEach(function(c,i){
+      setTimeout(function(){ c.classList.add('lit'); }, 650 + i*620);
+    });
+    setTimeout(function(){
+      chip.className = 'chip done';
+      chip.innerHTML = '3 verified · 1 gap';
+    }, 650 + claims.length*620 + 200);
+  }
+  // start when hero panel is in view (and visible after reveal)
+  if('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ setTimeout(runVerify, 500); io2.unobserve(e.target); }});
+    },{threshold:.4});
+    io2.observe(panel);
+  } else { runVerify(); }
+
+  // Cookie consent (in-memory only)
+  var consent = document.getElementById('consent');
+  setTimeout(function(){ consent.classList.add('in'); }, 1400);
+  function closeConsent(){ consent.classList.remove('in'); setTimeout(function(){ consent.style.display='none'; }, 500); }
+  document.getElementById('cookieAccept').addEventListener('click', closeConsent);
+  document.getElementById('cookieReject').addEventListener('click', closeConsent);
+</script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+/* ============================================================================
+   VERTEX — Technical-Editorial Design System
+   Implemented from design.md. Warm paper, cold data, one coral accent.
+   Tokens first; never hardcode hex in components.
+   ========================================================================== */
+
+:root {
+  /* 1.1 core surfaces & ink */
+  --paper: #f0efeb;
+  --surface: #ffffff;
+  --ink: #0a0a0a;
+  --ink-button: #1f1f1f;
+  --graphite: #2a2a2a;
+
+  /* 1.2 text grays */
+  --text-secondary: #908f8d;
+  --text-body: #6f6e6a;
+  --text-muted: #8c8b87;
+  --text-faint: #a8a7a3;
+
+  /* 1.3 accent */
+  --accent: #e85533;
+  --accent-hover: #d4452f;
+  --accent-tint: #fce7e0;
+  --accent-tint-2: #ffeee6;
+
+  /* 1.4 semantic / status */
+  --pos-text: #1e8a5f;
+  --pos-bg: #e4f5ec;
+  --neg-text: #d4452f;
+  --neg-bg: #fbe6e3;
+
+  /* 1.5 lines, borders & ornament */
+  --border: #e6e5e1;
+  --border-on-white: #ececec;
+  --grid-line: #e8e7e3;
+  --dot-on: #e85533;
+  --dot-off: #d8d8d6;
+
+  /* radius */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* shadow — whisper-quiet */
+  --shadow-card: 0 1px 2px rgba(16, 15, 14, 0.04);
+  --shadow-float: 0 8px 24px -12px rgba(16, 15, 14, 0.12);
+  --shadow-pop: 0 12px 40px -16px rgba(16, 15, 14, 0.18);
+
+  /* layout */
+  --frame-max: 1280px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* dark-surface variants (diff / final cta) */
+  --dark-bg: #1a1a1a;
+  --dark-panel: #232322;
+  --dark-border: #353532;
+  --dark-text: #e9e8e4;
+  --dark-text-muted: #9a9995;
+  --dark-pos: #5fd39b;
+  --dark-neg: #e89086;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip; /* contain any decorative bleed (dot-matrix) on small screens */
+}
+
+/* long unbroken tokens (URLs, citation codes) never force horizontal scroll */
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   FRAME — the blueprint side-rules + 12-col scaffolding
+   --------------------------------------------------------------------------- */
+.frame {
+  max-width: var(--frame-max);
+  margin-inline: auto;
+  border-inline: 1px solid var(--grid-line);
+}
+.wrap {
+  max-width: calc(var(--frame-max) - 2px);
+  margin-inline: auto;
+  padding-inline: 40px;
+}
+@media (max-width: 900px) {
+  .wrap {
+    padding-inline: 28px;
+  }
+}
+@media (max-width: 560px) {
+  .wrap {
+    padding-inline: 20px;
+  }
+}
+@media (max-width: 380px) {
+  .wrap {
+    padding-inline: 16px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   TYPOGRAPHY — two-tone display, eyebrow
+   --------------------------------------------------------------------------- */
+.display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  color: var(--ink);
+}
+.display--soft {
+  color: var(--text-secondary);
+}
+
+.eyebrow {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  gap: 0.6em;
+  align-items: center;
+}
+.eyebrow .accent {
+  color: var(--accent);
+}
+.eyebrow .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+.eyebrow--ondark {
+  color: var(--dark-text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* ---------------------------------------------------------------------------
+   BUTTONS
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  font-family: var(--font-sans), sans-serif;
+  text-align: center;
+  transition: background 0.16s var(--ease), border-color 0.16s var(--ease),
+    color 0.16s var(--ease), transform 0.16s var(--ease);
+}
+.btn .chev {
+  transition: transform 0.18s var(--ease);
+}
+.btn:hover .chev {
+  transform: translateX(2px);
+}
+
+.btn-primary {
+  background: var(--ink-button);
+  color: #fff;
+  border: 0;
+  border-radius: var(--r-sm);
+  padding: 13px 22px;
+  font-weight: 500;
+  font-size: 15px;
+}
+.btn-primary:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 13px 22px;
+  font-weight: 500;
+  font-size: 15px;
+}
+.btn-outline:hover {
+  border-color: var(--ink);
+}
+
+/* signature bracket-corner (crop-mark) button */
+.btn-bracket {
+  position: relative;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  padding: 14px 26px;
+  font-weight: 500;
+  font-size: 15px;
+}
+.btn-bracket::before,
+.btn-bracket::after,
+.btn-bracket > i::before,
+.btn-bracket > i::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--ink);
+  transition: border-color 0.16s var(--ease);
+}
+.btn-bracket::before {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.btn-bracket::after {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+.btn-bracket > i::before {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+.btn-bracket > i::after {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+.btn-bracket:hover::before,
+.btn-bracket:hover::after,
+.btn-bracket:hover > i::before,
+.btn-bracket:hover > i::after {
+  border-color: var(--accent);
+}
+.btn-bracket--ondark {
+  color: #fff;
+}
+.btn-bracket--ondark::before,
+.btn-bracket--ondark::after,
+.btn-bracket--ondark > i::before,
+.btn-bracket--ondark > i::after {
+  border-color: #fff;
+}
+
+.btn-light {
+  background: #fff;
+  color: var(--ink);
+  border: 0;
+  border-radius: var(--r-sm);
+  padding: 13px 22px;
+  font-weight: 500;
+  font-size: 15px;
+}
+.btn-light:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-float);
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ---------------------------------------------------------------------------
+   BADGES, PILLS, TAGS
+   --------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 3px 9px;
+  border-radius: var(--r-xs);
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.badge--accent {
+  color: var(--accent);
+  background: var(--accent-tint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+.badge--pos {
+  color: var(--pos-text);
+  background: var(--pos-bg);
+}
+.badge--neg {
+  color: var(--neg-text);
+  background: var(--neg-bg);
+}
+.pill {
+  border-radius: var(--r-pill);
+  padding: 5px 12px;
+}
+
+/* status tag (mono, for verified / gap rows) */
+.tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--r-xs);
+  white-space: nowrap;
+}
+.tag-ok {
+  background: var(--pos-bg);
+  color: var(--pos-text);
+}
+.tag-flag {
+  background: var(--neg-bg);
+  color: var(--neg-text);
+}
+.tag .sq {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: currentColor;
+  flex: none;
+}
+
+/* ---------------------------------------------------------------------------
+   DOT-MATRIX — squares, density gradient
+   --------------------------------------------------------------------------- */
+.dotmatrix {
+  --cell: 10px;
+  --gap: 8px;
+  display: grid;
+  grid-auto-rows: var(--cell);
+  grid-template-columns: repeat(auto-fill, var(--cell));
+  gap: var(--gap);
+  pointer-events: none;
+}
+.dotmatrix .dot {
+  width: var(--cell);
+  height: var(--cell);
+  border-radius: 1px;
+  background: var(--dot-off);
+}
+.dotmatrix .dot.is-on {
+  background: var(--dot-on);
+}
+
+/* ---------------------------------------------------------------------------
+   REVEAL — scroll-in
+   --------------------------------------------------------------------------- */
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.js-ready .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+   SECTIONS — rhythm + section heads
+   --------------------------------------------------------------------------- */
+.section {
+  padding: 112px 0;
+}
+.section--tight {
+  padding: 88px 0;
+}
+.section-on-white {
+  background: var(--surface);
+  border-top: 1px solid var(--grid-line);
+  border-bottom: 1px solid var(--grid-line);
+}
+.sec-head {
+  max-width: 34em;
+}
+.sec-head h2 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  margin-top: 18px;
+}
+.sec-head .lead {
+  color: var(--text-body);
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 72px 0;
+  }
+  .section--tight {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: 56px 0;
+  }
+  .section--tight {
+    padding: 48px 0;
+  }
+  .sec-head .lead {
+    font-size: 16.5px;
+  }
+}
