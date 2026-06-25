@@ -2,7 +2,7 @@ const ROWS = [
   {
     claim: (
       <>
-        Prohibited-use rules apply under <s>AI Act Art. 42(5)</s>{" "}
+        Rules on prohibited uses apply under <s>AI Act Art. 42(5)</s>{" "}
         <ins>Art. 5</ins>.
       </>
     ),
@@ -21,8 +21,8 @@ const ROWS = [
   {
     claim: (
       <>
-        ENISA guidance treated as <s>binding obligation</s>{" "}
-        <ins>non-binding recommendation</ins>.
+        ENISA guidance treated as a <s>binding obligation</s>{" "}
+        <ins>recommendation you don&apos;t have to follow</ins>.
       </>
     ),
     note: "Reclassified · guidance ≠ legal requirement",
@@ -41,14 +41,15 @@ export default function Differentiator() {
           </span>
           <h2>Other tools generate documents. We verify them.</h2>
           <p className="lead">
-            The dirty secret of AI legal docs: models invent article numbers, get
-            enforcement dates wrong, and present guidance as hard law. In
-            compliance, that&apos;s not a typo — it&apos;s the liability.
+            Here&apos;s the dirty secret of legal documents written by AI. The
+            models make things up. They invent article numbers, get enforcement
+            dates wrong, and quote guidance as if it were binding law. In
+            compliance that&apos;s not a typo. It&apos;s the liability you carry.
           </p>
           <p className="pull">
-            Every document passes an adversarial check that assumes the draft is
-            wrong until proven correct against the official text.{" "}
-            <b>No hallucinated law. Nothing reaches you unverified.</b>
+            Every document goes through an adversarial check. We assume the draft
+            is wrong until it proves itself right against the official text.{" "}
+            <b>No invented law. Nothing reaches you unverified.</b>
           </p>
         </div>
 

@@ -27,13 +27,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Verified — EU compliance documents for cross-border founders",
+  title: "Verified · EU compliance documents for founders selling into Europe",
   description:
-    "We scan the documents you have, fix what's missing, and verify every line against the actual law — before it ever reaches your buyer's lawyers. GDPR & EU AI Act compliance ops.",
+    "We read the documents you've got, fix what's missing, and check every line against the actual law before it reaches your buyer's lawyers. GDPR and EU AI Act compliance ops.",
   openGraph: {
-    title: "Verified — EU compliance documents for cross-border founders",
+    title: "Verified · EU compliance documents for founders selling into Europe",
     description:
-      "Scan your docs, fix the gaps, and verify every line against the actual law. GDPR & EU AI Act.",
+      "Read your documents, fix the gaps, and check every line against the actual law. GDPR and EU AI Act.",
     type: "website",
   },
 };

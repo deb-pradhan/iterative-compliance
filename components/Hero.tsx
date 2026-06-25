@@ -15,9 +15,10 @@ export default function Hero() {
             <span className="display--soft">killing it.</span>
           </h1>
           <p className="hero-sub">
-            You&apos;re selling into Europe from outside it. We scan the documents
-            you have, fix what&apos;s missing, and verify every line against the
-            actual law — before it ever reaches your buyer&apos;s lawyers.
+            You&apos;re selling into Europe from outside it. We read the documents
+            you&apos;ve already got and fix what&apos;s missing. Then we check every
+            line against the real law, before any of it reaches your
+            buyer&apos;s lawyers.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#pricing">
@@ -33,7 +34,7 @@ export default function Hero() {
           </div>
           <p className="hero-micro">
             <span className="sq" aria-hidden="true" /> No signup wall. Upload your
-            docs, get a gap report in minutes.
+            documents and get a gap report in minutes.
           </p>
         </div>
 

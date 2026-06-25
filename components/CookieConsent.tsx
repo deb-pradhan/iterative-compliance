@@ -32,7 +32,7 @@ export default function CookieConsent() {
       </span>
       <p>
         We use only essential cookies to run this site. Analytics stay off until
-        you say yes — that&apos;s what GDPR actually requires.
+        you say yes. That&apos;s what GDPR actually asks for.
       </p>
       <div className="row">
         <button className="btn btn-primary" onClick={close}>

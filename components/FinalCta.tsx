@@ -18,8 +18,8 @@ export default function FinalCta() {
           You can&apos;t fix what <span className="soft">you can&apos;t see.</span>
         </h2>
         <p className="lead">
-          Run the scan, get your gap report, and decide from there. Free, in
-          minutes.
+          Run the scan and get your gap report. Decide from there. It&apos;s free
+          and it takes minutes.
         </p>
         <a className="btn btn-light" href="#scan">
           Run my free compliance scan{" "}

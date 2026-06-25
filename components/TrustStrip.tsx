@@ -1,8 +1,8 @@
 const ITEMS = [
-  "EUR-Lex official text",
+  "Official EU legal texts",
   "European Commission",
   "EDPB & national regulators",
-  "No AI-hallucinated law",
+  "No law invented by AI",
 ];
 
 export default function TrustStrip() {

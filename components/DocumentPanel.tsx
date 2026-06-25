@@ -13,7 +13,7 @@ const CLAIMS: Claim[] = [
   {
     txt: "Personal data is processed under legitimate interest, Art. 6(1)(f) GDPR.",
     status: "ok",
-    cite: "Verified · EUR-Lex 32016R0679",
+    cite: "Verified · Regulation 2016/679",
   },
   {
     txt: "Standard Contractual Clauses govern international data transfers.",
@@ -21,7 +21,7 @@ const CLAIMS: Claim[] = [
     cite: "Verified · Decision 2021/914",
   },
   {
-    txt: "Record of Processing Activities (Art. 30) — required, not found.",
+    txt: "Record of Processing Activities (Art. 30), required, not found.",
     gap: true,
     status: "flag",
     cite: "Gap · mandatory document missing",
@@ -85,7 +85,7 @@ export default function DocumentPanel() {
     <div className="doc" ref={ref} aria-hidden="true">
       <div className="doc-bar">
         <span className="doc-file">
-          <span className="fsq" /> privacy-policy.pdf
+          <span className="fsq" /> privacy_policy.pdf
         </span>
         <span className={done ? "chip done" : "chip scanning"}>
           {done ? (
@@ -98,7 +98,7 @@ export default function DocumentPanel() {
         </span>
       </div>
       <div className="doc-body">
-        <div className="doc-title">Privacy Policy — Acme AI Ltd</div>
+        <div className="doc-title">Privacy Policy · Acme AI Ltd</div>
         <div className="doc-meta">
           CHECKED AGAINST · GDPR (2016/679) · EU AI ACT (2024/1689)
         </div>

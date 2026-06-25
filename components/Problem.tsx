@@ -1,7 +1,7 @@
 const REQS = [
   {
-    name: "GDPR-compliant privacy policy",
-    sub: "Matched to how your product actually processes data",
+    name: "A privacy policy that holds up under GDPR",
+    sub: "Matched to how your product actually handles data",
     label: "Asked for",
   },
   {
@@ -11,12 +11,12 @@ const REQS = [
   },
   {
     name: "Record of Processing Activities",
-    sub: "Legally required — most founders don't keep one",
+    sub: "Legally required, and most founders don't keep one",
     label: "Required",
   },
   {
     name: "EU AI Act readiness assessment",
-    sub: "Obligations phasing in through 2026–27",
+    sub: "Obligations that phase in through 2026 and 2027",
     label: "Required",
   },
 ];
@@ -33,8 +33,8 @@ export default function Problem() {
           <h2>It hits exactly when you&apos;re winning.</h2>
           <p className="lead">
             You found a European customer. They love the product. Then procurement
-            sends the data questionnaire — and the deal stalls until you produce
-            documents you didn&apos;t know you needed.
+            sends over the data questionnaire, and the deal stalls until you
+            produce documents you didn&apos;t know you needed.
           </p>
         </div>
 
@@ -53,9 +53,10 @@ export default function Problem() {
         </div>
 
         <p className="stakes reveal">
-          Get it wrong and the deal dies — or worse. GDPR fines reach{" "}
-          <b>up to 4% of global annual revenue.</b> Get it from a template
-          generator and the buyer&apos;s lawyers spot it in five minutes.{" "}
+          Get it wrong and the deal dies. Sometimes it gets worse than that. GDPR
+          fines reach <b>up to 4% of global annual revenue.</b> Get your documents
+          from a template generator and the buyer&apos;s lawyers will spot it in
+          about five minutes.{" "}
           <b>You don&apos;t have a compliance team. You have a deadline.</b>
         </p>
       </div>

@@ -33,12 +33,13 @@ export default function Footer() {
           </div>
         </div>
         <p className="disclaimer">
-          Verified provides compliance operations and document-preparation
-          services. We are not a law firm and do not provide legal advice.
-          Documents are verified against publicly available official sources at
-          the time of delivery; regulations change and ongoing compliance requires
-          monitoring. For legal advice specific to your situation, consult a
-          qualified attorney in the relevant jurisdiction.
+          Verified provides compliance operations and document preparation
+          services. We&apos;re not a law firm and we don&apos;t provide legal
+          advice. Documents are verified against publicly available official
+          sources at the time of delivery. Regulations change, and staying
+          compliant means watching them over time. For legal advice specific to
+          your situation, talk to a qualified attorney in the relevant
+          jurisdiction.
         </p>
         <p className="copyr">© 2026 Verified. All rights reserved.</p>
       </div>

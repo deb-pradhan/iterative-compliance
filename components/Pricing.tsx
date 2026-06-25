@@ -41,24 +41,24 @@ const PLANS: Plan[] = [
     name: "Remediation Pack",
     price: "€1,000",
     unit: "from",
-    who: "For early founders who just got asked for docs.",
+    who: "For early founders who just got asked for documents.",
     features: [
       "Privacy policy, DPA, ToS, RoPA",
-      "Tailored to your business",
-      "Fully source-verified",
+      "Shaped around your business",
+      "Verified against the source",
     ],
     cta: "Start the pack",
   },
   {
     ribbon: "★ Most popular",
-    name: "Market-Entry Kit",
+    name: "Market Entry Kit",
     price: "€3,500",
     unit: "from",
     who: "For funded teams closing EU enterprise deals.",
     features: [
       "Everything in Remediation",
       "AI Act assessment + DPIA",
-      "Vendor DPA review, board-ready",
+      "Vendor DPA review, ready for the board",
     ],
     cta: "Book a call",
     ctaPrimary: true,
@@ -71,7 +71,7 @@ const PLANS: Plan[] = [
     who: "For anyone who wants to set it and stop worrying.",
     features: [
       "Ongoing monitoring",
-      "Quarterly re-scans",
+      "Fresh scans every quarter",
       "Updates as rules phase in",
     ],
     cta: "See plans",
@@ -89,8 +89,8 @@ export default function Pricing() {
           </span>
           <h2>Start free. Pay only when you decide to fix it.</h2>
           <p className="lead">
-            See exactly where you stand at no cost, then move up the moment a deal
-            — or a regulator — demands it.
+            See exactly where you stand at no cost. Then move up the moment a deal
+            demands it, or a regulator does.
           </p>
         </div>
 

@@ -1,13 +1,13 @@
 const ITEMS = [
   {
     k: "A",
-    lead: "Cross-border founders",
-    rest: " — MENA, India, SEA, US — hitting GDPR and AI Act walls the moment they sell to European customers.",
+    lead: "Founders selling across borders",
+    rest: ". From MENA, India, SEA or the US, they hit GDPR and AI Act walls the moment they sell to European customers.",
   },
   {
     k: "B",
     lead: "Solopreneurs",
-    rest: " who need legitimate, defensible documents without a €400-an-hour lawyer on retainer.",
+    rest: " who need real, defensible documents without keeping a lawyer on retainer at 400 euros an hour.",
   },
   {
     k: "C",
@@ -17,7 +17,7 @@ const ITEMS = [
   {
     k: "D",
     lead: "Teams shipping AI",
-    rest: " who need to know what the AI Act actually requires — before a regulator tells them.",
+    rest: " who need to know what the AI Act actually asks of them, before a regulator tells them.",
   },
 ];
 
