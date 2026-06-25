@@ -397,9 +397,14 @@
   border-top: 1px solid var(--grid-line);
 }
 .step {
-  padding: 30px 26px 30px 0;
+  padding: 30px 26px;
   border-right: 1px solid var(--grid-line);
   position: relative;
+}
+/* first column hugs the section's left edge; last column hugs the right edge.
+   inner columns keep padding on both sides so text never touches a divider. */
+.step:first-child {
+  padding-left: 0;
 }
 .step:last-child {
   border-right: none;
@@ -440,6 +445,9 @@
     padding-right: 26px;
     border-right: 1px solid var(--grid-line);
   }
+  .step:nth-child(even) {
+    padding-left: 26px;
+  }
 }
 @media (max-width: 520px) {
   .loop {
@@ -448,6 +456,9 @@
   .step:nth-child(odd) {
     border-right: none;
     padding-right: 0;
+  }
+  .step:nth-child(even) {
+    padding-left: 0;
   }
 }
 
