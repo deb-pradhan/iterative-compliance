@@ -131,13 +131,27 @@
     display: none;
   }
 }
-@media (max-width: 380px) {
+/* compact the nav for phones — the default CTA is too chunky on small screens */
+@media (max-width: 640px) {
   .nav-in {
-    height: 58px;
+    height: 60px;
+  }
+  .nav-cta {
+    gap: 10px;
   }
   .nav-cta .btn-primary {
-    padding: 11px 14px;
+    padding: 9px 15px;
     font-size: 13.5px;
+    border-radius: 7px;
+  }
+}
+@media (max-width: 400px) {
+  .nav-in {
+    height: 56px;
+  }
+  .nav-cta .btn-primary {
+    padding: 8px 13px;
+    font-size: 13px;
   }
   .brand {
     font-size: 15px;
