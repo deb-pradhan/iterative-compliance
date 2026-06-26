@@ -3,9 +3,8 @@ export default function Nav() {
     <header className="nav">
       <div className="wrap nav-in">
         <a className="brand" href="#top" aria-label="Verified home">
-          <span className="mark" aria-hidden="true">
-            ✓
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="brand-orb" src="/assets/logo-orb.png" alt="" aria-hidden="true" />
           verified
         </a>
         <nav className="nav-links" aria-label="Primary">

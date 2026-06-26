@@ -4,9 +4,8 @@ export default function Footer() {
       <div className="wrap">
         <div className="foot-top">
           <a className="brand" href="#top">
-            <span className="mark" aria-hidden="true">
-              ✓
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="brand-orb" src="/assets/logo-orb.png" alt="" aria-hidden="true" />
             verified
           </a>
           <div className="foot-links">
