@@ -1,10 +1,17 @@
-# Verified — EU compliance landing page
+# Iterative Research — site
 
-A Next.js (App Router) landing page for **Verified**, an EU compliance-ops product
-for cross-border founders. The copy comes from `compliance-landing-page.html`; the
-visual language implements the **"Vertex" technical-editorial design system**
-defined in `design.md` (warm paper, one coral accent, grotesque type, blueprint
-grid, the dot-matrix motif, bracket-corner buttons).
+A Next.js (App Router) project housing two sites that share one design language,
+the **"Vertex" technical-editorial design system** from `design.md` (warm paper,
+one coral accent, grotesque type, blueprint grid, the dot-matrix motif,
+bracket-corner buttons):
+
+- **`/`** — the **Iterative Research** main site. Content extracted from the live
+  Framer site at iterativeresearch.xyz (home, about, and FAQ pages): hero,
+  services, the four products (AnalyzIR, DreamIR, StringIR, ScripIR) with their
+  real product screenshots, why-partner, about (stats + values), and FAQ.
+- **`/compliance`** — the **Verified** EU compliance-ops landing page. Copy from
+  `compliance-landing-page.html`. Linked from the main site nav, footer, and the
+  AnalyzIR product card.
 
 ## Stack
 
@@ -26,14 +33,19 @@ npm start        # serve the production build
 
 ```
 app/
-  layout.tsx        # fonts + metadata
-  globals.css       # design tokens + primitives (buttons, tags, dot-matrix, frame)
-  components.css     # section-level layout styles
-  page.tsx          # section composition
+  layout.tsx          # fonts + default (Iterative Research) metadata
+  globals.css         # design tokens + primitives (buttons, tags, dot-matrix, frame)
+  components.css      # shared section-level layout styles
+  main.css            # main-site section styles
+  page.tsx            # Iterative Research main site
+  compliance/page.tsx # Verified compliance landing (own metadata)
 components/
-  Nav, Hero, DocumentPanel, DotMatrix, TrustStrip, Problem, HowItWorks,
-  Differentiator, Pricing, WhoFor, Faq, FinalCta, Footer, CookieConsent,
-  ScrollReveal
+  main/               # Iterative Research sections (Nav, Hero, Services,
+                      #   Products, WhyPartner, About, MainFaq, FinalCta, Footer)
+  DotMatrix, ScrollReveal   # shared primitives (used by both sites)
+  Nav, Hero, DocumentPanel, TrustStrip, Problem, HowItWorks, Differentiator,
+  Pricing, WhoFor, Faq, FinalCta, Footer, CookieConsent  # compliance sections
+public/assets/        # logo-orb + product screenshots + OG image
 ```
 
 ## Design-system notes

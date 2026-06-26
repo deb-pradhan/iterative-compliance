@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "./components.css";
+import "./main.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,14 +28,17 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Verified · EU compliance documents for founders selling into Europe",
+  metadataBase: new URL("https://iterativeresearch.xyz"),
+  title: "Iterative Research — Enterprise AI Infrastructure That Actually Works",
   description:
-    "We read the documents you've got, fix what's missing, and check every line against the actual law before it reaches your buyer's lawyers. GDPR and EU AI Act compliance ops.",
+    "Iterative Research builds compliant, high-performance AI platforms for mission-critical sectors like healthcare, finance, and defense. Scalable AI Infrastructure. Expert Guidance. Real Business Impact.",
+  icons: { icon: "/assets/logo-orb.png", apple: "/assets/logo-orb.png" },
   openGraph: {
-    title: "Verified · EU compliance documents for founders selling into Europe",
+    title: "Iterative Research — Enterprise AI Infrastructure That Actually Works",
     description:
-      "Read your documents, fix the gaps, and check every line against the actual law. GDPR and EU AI Act.",
+      "Compliant, high-performance AI platforms for mission-critical sectors. Scalable infrastructure, expert guidance, real business impact.",
     type: "website",
+    images: ["/assets/og.png"],
   },
 };
 
