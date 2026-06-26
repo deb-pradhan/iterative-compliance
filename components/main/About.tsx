@@ -47,7 +47,7 @@ export default function About() {
             <span className="dot" aria-hidden="true" />
             <span className="accent">About us</span>
           </span>
-          <h2>A UAE-based AI infrastructure company.</h2>
+          <h2>An AI infrastructure company based in the UAE.</h2>
           <p className="lead">
             Founded in 2022 and operating from Dubai, we deliver secure, scalable
             solutions for enterprise and government.
@@ -68,9 +68,9 @@ export default function About() {
             <p>
               <b>
                 Our team of infrastructure engineers, AI consultants, and DevOps
-                specialists build mission-ready systems
+                specialists build mission ready systems
               </b>{" "}
-              where security, compliance, and performance are non-negotiable.
+              where security, compliance, and performance cannot be compromised.
             </p>
             <p>
               From private LLM deployment to DevOps and MLOps integration, we

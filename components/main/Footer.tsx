@@ -1,3 +1,5 @@
+import { OFFICES } from "./Offices";
+
 const SOCIAL = {
   x: "https://x.com/iriterative?s=11",
   linkedin:
@@ -5,7 +7,6 @@ const SOCIAL = {
   instagram:
     "https://www.instagram.com/iterativeresearch?igsh=MWZ2enAwMGYzZWRoNg==",
 };
-const ORIGIN = "https://iterativeresearch.xyz";
 
 function IconX() {
   return (
@@ -37,13 +38,13 @@ export default function Footer() {
       <div className="wrap">
         <div className="foot-top">
           <div className="foot-brand-col">
-            <a className="brand" href="#top">
+            <a className="brand" href="/">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="brand-orb" src="/assets/logo-orb.png" alt="" aria-hidden="true" />
               Iterative Research
             </a>
             <p className="foot-tagline">
-              Compliant, high-performance AI platforms for mission-critical
+              Compliant, high performance AI platforms for mission critical
               sectors. Dubai, UAE · Founded 2022.
             </p>
             <div className="foot-social">
@@ -61,34 +62,50 @@ export default function Footer() {
           <div className="foot-links">
             <div className="foot-col">
               <h4>Explore</h4>
-              <a href="#services">Services</a>
-              <a href="#products">Products</a>
-              <a href="#about">About us</a>
-              <a href="#faq">FAQ</a>
+              <a href="/#services">Services</a>
+              <a href="/#products">Products</a>
+              <a href="/about">About us</a>
+              <a href="/#faq">FAQ</a>
             </div>
             <div className="foot-col">
               <h4>Products</h4>
-              <a href="#products">AnalyzIR</a>
-              <a href="#products">DreamIR</a>
-              <a href="#products">StringIR</a>
-              <a href="#products">ScripIR</a>
+              <a href="/#products">AnalyzIR</a>
+              <a href="/#products">DreamIR</a>
+              <a href="/#products">StringIR</a>
+              <a href="/#products">ScripIR</a>
             </div>
             <div className="foot-col">
               <h4>Company</h4>
-              <a href="/compliance">Compliance (Verified)</a>
+              <a href="/compliance">Compliance</a>
               <a href="https://cal.com/iterative-research" target="_blank" rel="noopener noreferrer">
                 Get in touch
               </a>
-              <a href={`${ORIGIN}/termsconditions`} target="_blank" rel="noopener noreferrer">
-                Terms &amp; Conditions
-              </a>
-              <a href={`${ORIGIN}/privacypolicy`} target="_blank" rel="noopener noreferrer">
-                Privacy Policy
-              </a>
+              <a href="/termsconditions">Terms &amp; Conditions</a>
+              <a href="/privacypolicy">Privacy Policy</a>
             </div>
           </div>
         </div>
-        <p className="copyr">© 2026 Iterative Research. All rights reserved.</p>
+
+        <div className="foot-offices">
+          {OFFICES.map((o) => (
+            <div className="foot-office" key={o.label}>
+              <h5>{o.label}</h5>
+              <address>
+                {o.name}
+                <br />
+                {o.lines.map((l) => (
+                  <span key={l}>
+                    {l}
+                    <br />
+                  </span>
+                ))}
+              </address>
+              {o.phone && <div className="ophone">{o.phone}</div>}
+            </div>
+          ))}
+        </div>
+
+        <p className="copyr">© 2026 Iterative Research Tech Limited. All rights reserved.</p>
       </div>
     </footer>
   );
