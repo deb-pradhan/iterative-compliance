@@ -1,36 +1,51 @@
 import type { ReactNode } from "react";
 
+// One coherent outline family: 24-grid, 1.75 stroke, round caps/joins.
+const ICON = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.75,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+
 function IconServer() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="6" rx="1.5" />
-      <rect x="3" y="14" width="18" height="6" rx="1.5" />
-      <path d="M7 7h.01M7 17h.01" />
+    <svg {...ICON}>
+      <rect x="3" y="4" width="18" height="7" rx="2" />
+      <rect x="3" y="13" width="18" height="7" rx="2" />
+      <path d="M7 7.5h.01" />
+      <path d="M7 16.5h.01" />
     </svg>
   );
 }
-function IconPipeline() {
+function IconBranch() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="5" cy="6" r="2.4" />
-      <circle cx="19" cy="18" r="2.4" />
-      <path d="M5 8.5v4a3 3 0 0 0 3 3h8.5" />
+    <svg {...ICON}>
+      <circle cx="6" cy="6" r="2.5" />
+      <circle cx="6" cy="18" r="2.5" />
+      <circle cx="18" cy="6" r="2.5" />
+      <path d="M6 8.5v7" />
+      <path d="M18 8.5a9 9 0 0 1-9 9" />
     </svg>
   );
 }
 function IconLock() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="4" y="10" width="16" height="10" rx="2" />
-      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    <svg {...ICON}>
+      <rect x="4.5" y="10.5" width="15" height="9.5" rx="2.2" />
+      <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+      <path d="M12 14.5v2" />
     </svg>
   );
 }
-function IconStrategy() {
+function IconTrend() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M3 20h18" />
-      <path d="M6 20V11M11 20V5M16 20v-6M21 20V8" />
+    <svg {...ICON}>
+      <path d="M3 16.5 9.5 10l4 4L21 6.5" />
+      <path d="M15 6.5h6v6" />
     </svg>
   );
 }
@@ -45,7 +60,7 @@ const SERVICES: Svc[] = [
     featured: true,
   },
   {
-    icon: <IconPipeline />,
+    icon: <IconBranch />,
     title: "DevOps for AI",
     body: "CI/CD pipelines tailored for ML workflows. Reduce drift and increase uptime.",
   },
@@ -55,7 +70,7 @@ const SERVICES: Svc[] = [
     body: "Run language models on dedicated infrastructure, with full data control and regional compliance.",
   },
   {
-    icon: <IconStrategy />,
+    icon: <IconTrend />,
     title: "AI Strategy & Consulting",
     body: "Leverage our deep AI expertise to develop actionable, growth-focused AI strategies that align with your business goals.",
   },
