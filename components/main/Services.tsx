@@ -50,14 +50,13 @@ function IconTrend() {
   );
 }
 
-type Svc = { icon: ReactNode; title: string; body: string; featured?: boolean };
+type Svc = { icon: ReactNode; title: string; body: string };
 
 const SERVICES: Svc[] = [
   {
     icon: <IconServer />,
     title: "AI Infrastructure as a Service",
     body: "Secure, scalable compute environments for training, hosting, and deployment.",
-    featured: true,
   },
   {
     icon: <IconBranch />,
@@ -95,9 +94,7 @@ export default function Services() {
         <div className="svc-grid">
           {SERVICES.map((s) => (
             <div className="svc reveal" key={s.title}>
-              <span className={`icon-chip${s.featured ? " featured" : ""}`}>
-                {s.icon}
-              </span>
+              <span className="icon-chip">{s.icon}</span>
               <h3>{s.title}</h3>
               <p>{s.body}</p>
             </div>
