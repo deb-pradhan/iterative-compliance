@@ -14,7 +14,7 @@ import CookieConsent from "@/components/CookieConsent";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Verified · EU compliance documents for founders selling into Europe",
+  title: "Iterative Research · EU compliance documents for founders selling into Europe",
   description:
     "We read the documents you've got, fix what's missing, and check every line against the actual law before it reaches your buyer's lawyers. GDPR and EU AI Act compliance ops.",
 };

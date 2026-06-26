@@ -6,7 +6,7 @@ export default function Footer() {
           <a className="brand" href="#top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="brand-orb" src="/assets/logo-orb.png" alt="" aria-hidden="true" />
-            verified
+            Iterative Research
           </a>
           <div className="foot-links">
             <div className="foot-col">
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="disclaimer">
-          Verified provides compliance operations and document preparation
+          Iterative Research provides compliance operations and document preparation
           services. We&apos;re not a law firm and we don&apos;t provide legal
           advice. Documents are verified against publicly available official
           sources at the time of delivery. Regulations change, and staying
@@ -40,7 +40,7 @@ export default function Footer() {
           your situation, talk to a qualified attorney in the relevant
           jurisdiction.
         </p>
-        <p className="copyr">© 2026 Verified. All rights reserved.</p>
+        <p className="copyr">© 2026 Iterative Research. All rights reserved.</p>
       </div>
     </footer>
   );
