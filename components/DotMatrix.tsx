@@ -56,9 +56,17 @@ export default function DotMatrix({
       aria-hidden="true"
       style={{ gridTemplateColumns: `repeat(${cols}, var(--cell))` }}
     >
-      {cells.map((on, i) => (
-        <span key={i} className={on ? "dot is-on" : "dot"} />
-      ))}
+      {cells.map((on, i) => {
+        // a sparse, deterministic subset of lit dots shimmers, out of phase
+        const sh = on && i % 9 === 0;
+        return (
+          <span
+            key={i}
+            className={`dot${on ? " is-on" : ""}${sh ? " sh" : ""}`}
+            style={sh ? { animationDelay: `${(i % 13) * 0.27}s` } : undefined}
+          />
+        );
+      })}
     </div>
   );
 }

@@ -463,3 +463,136 @@ ul {
     font-size: 16.5px;
   }
 }
+
+/* ===========================================================================
+   MOTION — entrances + micro-interactions. Vertex: instruments settling,
+   not bouncing (120–220ms, var(--ease), restraint). All disabled under
+   prefers-reduced-motion via the global override below.
+   ========================================================================== */
+
+/* --- Lenis smooth scroll --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* --- staggered rise-in (runs on load; CSS-only, no flash) --- */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-copy > *,
+.m-hero-grid > div:first-child > *,
+.page-head .wrap > * {
+  animation: riseIn 0.7s var(--ease) both;
+}
+.hero-copy > *:nth-child(1),
+.m-hero-grid > div:first-child > *:nth-child(1),
+.page-head .wrap > *:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.hero-copy > *:nth-child(2),
+.m-hero-grid > div:first-child > *:nth-child(2),
+.page-head .wrap > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.hero-copy > *:nth-child(3),
+.m-hero-grid > div:first-child > *:nth-child(3),
+.page-head .wrap > *:nth-child(3) {
+  animation-delay: 0.18s;
+}
+.hero-copy > *:nth-child(4),
+.m-hero-grid > div:first-child > *:nth-child(4),
+.page-head .wrap > *:nth-child(4) {
+  animation-delay: 0.26s;
+}
+.hero-copy > *:nth-child(5),
+.m-hero-grid > div:first-child > *:nth-child(5) {
+  animation-delay: 0.34s;
+}
+.hero-visual,
+.m-hero-visual {
+  animation: riseIn 0.85s var(--ease) 0.2s both;
+}
+
+/* --- nav links: underline grows from the left on hover --- */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s var(--ease);
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- buttons: a small settle on press --- */
+.btn-primary:active,
+.btn-light:active,
+.btn-bracket:active,
+.btn-outline:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* --- reveal items become snappy once in, so hover feels immediate --- */
+.js-ready .card.in,
+.js-ready .prod-card.in,
+.js-ready .who-item.in,
+.js-ready .office.in {
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+/* --- "live" indicators: a slow, low-amplitude pulse --- */
+@keyframes livePulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.32;
+  }
+}
+.rl-top .live,
+.consent .ch .sq {
+  animation: livePulse 1.9s var(--ease) infinite;
+}
+
+/* --- dot-matrix: a few squares shimmer, nearly subliminal --- */
+@keyframes dotShimmer {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+.dotmatrix .dot.sh {
+  animation: dotShimmer 3.4s ease-in-out infinite;
+}

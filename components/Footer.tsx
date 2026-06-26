@@ -3,10 +3,13 @@ export default function Footer() {
     <footer className="foot">
       <div className="wrap">
         <div className="foot-top">
-          <a className="brand" href="#top">
+          <a className="brand brand--product" href="#top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="brand-orb" src="/assets/logo-orb.png" alt="" aria-hidden="true" />
-            Iterative Research
+            <span className="brand-stack">
+              <span className="brand-name">Verified</span>
+              <span className="brand-by">by Iterative Research</span>
+            </span>
           </a>
           <div className="foot-links">
             <div className="foot-col">
@@ -26,8 +29,12 @@ export default function Footer() {
             <div className="foot-col">
               <h4>Company</h4>
               <a href="#faq">FAQ</a>
-              <a href="#">Contact</a>
-              <a href="#">Privacy &amp; terms</a>
+              <a href="https://cal.com/iterative-research" target="_blank" rel="noopener noreferrer">
+                Contact
+              </a>
+              <a href="/privacypolicy">Privacy Policy</a>
+              <a href="/termsconditions">Terms &amp; Conditions</a>
+              <a href="/">Iterative Research ↗</a>
             </div>
           </div>
         </div>
@@ -40,7 +47,7 @@ export default function Footer() {
           your situation, talk to a qualified attorney in the relevant
           jurisdiction.
         </p>
-        <p className="copyr">© 2026 Iterative Research. All rights reserved.</p>
+        <p className="copyr">© 2026 Iterative Research Tech Limited. All rights reserved.</p>
       </div>
     </footer>
   );

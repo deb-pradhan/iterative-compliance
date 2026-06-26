@@ -2,10 +2,17 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="wrap nav-in">
-        <a className="brand" href="#top" aria-label="Iterative Research home">
+        <a
+          className="brand brand--product"
+          href="#top"
+          aria-label="Verified, an Iterative Research product"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="brand-orb" src="/assets/logo-orb.png" alt="" aria-hidden="true" />
-          Iterative Research
+          <span className="brand-stack">
+            <span className="brand-name">Verified</span>
+            <span className="brand-by">by Iterative Research</span>
+          </span>
         </a>
         <nav className="nav-links" aria-label="Primary">
           <a href="#how">How it works</a>
@@ -14,8 +21,15 @@ export default function Nav() {
           <a href="#faq">FAQ</a>
         </nav>
         <div className="nav-cta">
-          <a className="nav-signin" href="#pricing">
-            See pricing
+          <a
+            className="nav-back"
+            href="/"
+            aria-label="Back to the Iterative Research main site"
+          >
+            <span className="chev-back" aria-hidden="true">
+              ←
+            </span>
+            <span className="nav-back-label">Iterative Research</span>
           </a>
           <a className="btn btn-primary" href="#scan">
             Run free scan <span className="chev" aria-hidden="true">›</span>

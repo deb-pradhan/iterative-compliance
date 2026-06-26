@@ -61,6 +61,59 @@
   align-items: center;
   gap: 16px;
 }
+
+/* product lockup: "Verified" + "by Iterative Research" */
+.brand--product {
+  align-items: center;
+}
+.brand-stack {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.04;
+}
+.brand-name {
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.brand-by {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* back to the main site */
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color 0.15s var(--ease);
+}
+.nav-back .chev-back {
+  display: inline-block;
+  transition: transform 0.18s var(--ease);
+}
+.nav-back:hover {
+  color: var(--ink);
+}
+.nav-back:hover .chev-back {
+  transform: translateX(-3px);
+}
+@media (max-width: 560px) {
+  .brand-by {
+    display: none;
+  }
+  .nav-back-label {
+    display: none;
+  }
+}
 .nav-signin {
   font-size: 14px;
   font-weight: 500;

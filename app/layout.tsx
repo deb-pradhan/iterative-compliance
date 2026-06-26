@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 import "./components.css";
 import "./main.css";
@@ -52,7 +53,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${interDisplay.variable} ${jetbrains.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }
